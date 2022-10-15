@@ -13,6 +13,7 @@ public class ServicioDFS<T> {
 
 	public ServicioDFS(Grafo<T> grafo) {
 		this.grafo = grafo;
+		this.colores = new HashMap<>();
 	}
 
 
