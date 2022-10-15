@@ -1,0 +1,25 @@
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+
+
+public class ServicioBFS {
+
+	private Grafo<?> grafo;
+	
+	public ServicioBFS(Grafo<?> grafo) {
+		this.grafo = grafo;
+	}
+	
+	public List<Integer> bfsForest(Vertice v) {
+		LinkedList<Integer> lista = new LinkedList<Integer>();	
+		
+		boolean[] visitedNodes = new boolean[ v.cantidadArcos() +1];		
+		ArrayList<Integer> nodesInVisitedOrder = new ArrayList<Integer>();
+		
+	}
+
+	
+}
+
+

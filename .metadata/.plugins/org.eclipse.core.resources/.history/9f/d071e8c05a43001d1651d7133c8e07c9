@@ -1,0 +1,99 @@
+import java.util.ArrayList;
+import java.util.HashMap;
+
+
+public class GrafoDirigido<T> implements Grafo<T> {
+
+	private HashMap<Integer, ArrayList<Arco>> grafo;
+
+	public GrafoDirigido() {
+		this.grafo = new HashMap<Integer, ArrayList<Arco>>();
+	}
+
+	public void agregarVertice(int verticeId) {
+		if (!contieneVertice(verticeId)) {
+			this.grafo.put(verticeId, new ArrayList<>());
+		}
+	}
+
+	public void borrarVertice(int verticeId) {
+		if (!contieneVertice(verticeId)) {
+			this.grafo.remove(verticeId);
+		}
+	}
+
+	public void agregarArco(int origen, int destino, T etiqueta) {
+		System.out.println(origen);
+		if (!contieneVertice(origen)) {
+			grafo.put(origen, new ArrayList<Arco>());
+		}else {
+				ArrayList<Arco> ac = grafo.get(origen);
+				System.out.println(ac);
+				if() {
+					 grafo.get(origen).add(new Arco(origen,destino,etiqueta));
+			}
+		}
+		
+	}
+
+	@Override
+	/*
+	 * public void borrarArco(int origen, int destino) { ArrayList<T> lista =
+	 * grafo.get(origen); if(!lista.isEmpty()) { for(int i =0;i< lista.size();i++) {
+	 * Arco ac = lista.get(i); if (ac.getEtiqueta().equals(destino)) {
+	 * lista.remove(i); break; } } }
+	 * 
+	 * }
+	 */
+
+	public boolean contieneVertice(int verticeId) {
+		if (this.grafo.containsKey(verticeId)) {
+			return true;
+		}
+		return false;
+	}
+
+	@Override
+	public boolean existeArco(int origen, int destino) {
+		if (!this.grafo.containsKey(origen)) {
+			return false;
+		} else {
+			//if(this.grafo.get(origen))
+			return true;
+		}
+	}
+
+	@Override
+	public Arco<T> obtenerArco(int verticeId1, int verticeId2) {
+		if(this.contieneVertice(verticeId2)&&(this.contieneVertice(verticeId2))) {
+			this.grafo.get(verticeId2);
+		}
+		return null;
+	}
+
+	public HashMap<Integer, ArrayList<Arco>> getVertices() {
+		return this.grafo;
+	}
+
+	public void mostrarGrafo() {
+		for (Integer key : this.grafo.keySet()) {
+			ArrayList<Arco> ac = grafo.get(key);
+			System.out.println(key);
+			if (!(ac.isEmpty())) {
+				for (Arco a : ac) {
+					System.out.println(a.toString() + " ");
+				}
+			}
+			System.out.println();
+		}
+	}
+
+	@Override
+	public void borrarArco(int verticeId1, int verticeId2) {
+		if(this.contieneVertice(verticeId2)&&(this.contieneVertice(verticeId2))) {
+			
+		}
+
+	}
+
+}

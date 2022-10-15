@@ -1,0 +1,100 @@
+
+import java.util.LinkedList;
+
+public class GrafoDirigido<T> implements Grafo<T> {
+
+	private LinkedList<Vertice<T>> vertices;
+
+	public GrafoDirigido() {
+		this.vertices = new LinkedList<Vertice<T>>();
+	}
+
+	public void agregarVertice(int idVertice) {
+		Vertice<T> vertice = new Vertice<T>(idVertice);
+		if (!this.vertices.contains(vertice)) {
+			vertices.add(vertice);
+		}
+	}
+
+	public void agregarArco(int verticeId1, int verticeId2, T etiqueta) {
+		Vertice<T> vertice1 = null;
+		Vertice<T> vertice2 = null;
+		for (Vertice<T> v : vertices) {
+			if (v.verticeId == verticeId1) {
+				vertice1 = v;
+			}
+			if (v.verticeId == verticeId2) {
+				vertice2 = v;
+			}
+		}
+		if ((vertice1 != null) && (vertice2 != null)) {
+			vertice1.agregarArco(verticeId2, etiqueta);
+		}
+	}
+
+	public void borrarVertice(int idVertice) {
+		Vertice<T> verticeO = null;
+		for (Vertice<T> v : vertices) {
+			v.borrarArco(idVertice);
+			if (v.verticeId == idVertice) {
+				verticeO = v;
+			}
+		}
+		vertices.remove(verticeO);
+	}
+
+	public void borrarArco(int verticeId1, int verticeId2) {
+		Vertice<T> verticeO = null;
+		for (Vertice<T> v : vertices) {
+			if (v.verticeId == verticeId1) {
+				verticeO = v;
+			}
+		}
+		verticeO.borrarArco(verticeId2);
+	}
+
+	public boolean contieneVertice(int verticeId) {
+		for (Vertice<T> v : vertices) {
+			if (v.verticeId == verticeId) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	public boolean existeArco(int verticeId1, int verticeId2) {
+		Vertice<T> arco = null;
+		for (Vertice<T> v : vertices) {
+			if (v.verticeId == verticeId1) {
+				arco = v;
+			}
+		}
+		if (arco != null)
+			return arco.existeArco(verticeId2);
+		else
+			return false;
+	}
+
+	public Arco<T> obtenerArco(int verticeId1, int verticeId2) {
+		Arco<T> arco = new Arco<T>();
+		for (Vertice<T> v : vertices) {
+			if (v.verticeId == verticeId1) {
+				return v.obtenerArco(verticeId2);
+			}
+		}
+		return null;
+	}
+
+	public int cantidadVertices() {
+		return this.vertices.size();
+	}
+
+	public int cantidadArcos() {
+		int cantidad = 0;
+		for (Vertice v : vertices) {
+			cantidad += v.cantidadArcos();
+		}
+		return cantidad;
+	}
+
+}

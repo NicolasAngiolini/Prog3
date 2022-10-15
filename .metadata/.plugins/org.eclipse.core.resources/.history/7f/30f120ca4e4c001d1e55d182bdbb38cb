@@ -1,0 +1,35 @@
+import java.util.HashMap;
+
+public class Main {
+
+	public static void main(String[] args) {
+		
+		
+		HashMap<Integer,String> map = new HashMap<Integer, String>();
+		
+		
+		GrafoDirigido grafo = new GrafoDirigido();
+
+		grafo.agregarVertice(2);
+		grafo.agregarVertice(3);
+
+	
+	grafo.agregarArco(4, 3, "anafe");
+	
+	grafo.agregarArco(2, 4, "ancla");
+	
+	grafo.agregarArco(2, 4, "1ancla");
+		
+		//System.out.println(grafo.obtenerArco(4, 3));
+		
+		
+		
+		
+		//grafo.mostrarGrafo();
+	}
+	
+
+
+	
+	
+}

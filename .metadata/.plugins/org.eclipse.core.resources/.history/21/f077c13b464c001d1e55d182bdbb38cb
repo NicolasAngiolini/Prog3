@@ -1,0 +1,24 @@
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.ListIterator;
+
+
+public class ServicioBFS {
+
+	private Grafo<?> grafo;
+	
+	public ServicioBFS(Grafo<?> grafo) {
+		this.grafo = grafo;
+	}
+	
+	public List<Integer> bfsForest(int verticeId) {
+	
+	}
+		
+	}
+
+	
+}
+
+

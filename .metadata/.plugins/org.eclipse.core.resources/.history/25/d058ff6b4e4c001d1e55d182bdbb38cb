@@ -1,0 +1,59 @@
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedList;
+
+
+public class ServicioDFS<T> {
+
+	protected LinkedList<Integer> vertices;
+	protected Grafo<T> grafo;
+	protected HashMap<Integer, String> colores;
+
+	public ServicioDFS(Grafo<T> grafo) {
+		this.grafo = grafo;
+	}
+
+	private void iniciarEstructura() {
+		
+		}
+	
+	
+	//O(|V|+|A|). Va a pasar una vez por cada vertice y una vez por cada arco.
+	public ArrayList<Integer> dfsForest() {		
+		//this.iniciarEstructura();//Inicializo todas las estructuras
+		
+		for (Iterator<Integer> vertices = this.grafo.obtenerVertices(); vertices.hasNext();) {
+			Integer vertice = (Integer) vertices.next();
+			this.colores.put(vertice,"blanco");
+		
+		}
+		System.out.println(colores);
+		ArrayList<Integer> resultado = new ArrayList<Integer>();		
+		for (Iterator<Integer> vertices = this.grafo.obtenerVertices(); vertices.hasNext();) {//Obtengo todos los vertices del grafo
+			Integer vertice = (Integer) vertices.next();
+			if (colores.get(vertice).equals("blanco")) {
+				resultado.addAll(dfsVisit(vertice));//Inicio el recorrido
+			}
+		}		
+		return resultado;
+		
+	}
+
+	private ArrayList<Integer> dfsVisit(Integer vertice) {		
+		ArrayList<Integer> resultado = new ArrayList<Integer>();
+		colores.put(vertice,"amarillo");
+		resultado.add(vertice);		
+		for (Iterator<Integer> adyacentes = this.grafo.obtenerAdyacentes(vertice); adyacentes.hasNext();) {
+			Integer adyacente = (Integer) adyacentes.next();
+			if (colores.get(adyacente).equals("blanco")) {
+				resultado.addAll(dfsVisit(adyacente));
+			}			
+		}		
+		colores.put(vertice,"negro");		
+		return resultado;
+	}
+	
+
+}

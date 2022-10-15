@@ -1,0 +1,41 @@
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.ListIterator;
+
+
+public class ServicioBFS {
+
+	private Grafo<?> grafo;
+	protected LinkedList<Integer> vertices;
+	
+	public ServicioBFS(Grafo<?> grafo) {
+		this.grafo = grafo;
+	}
+	
+	public List<Integer> bfsForest() {
+	 Iterator<Integer> iterador = grafo.obtenerVertices();
+	 while(iterador.hasNext()) {
+		//pone en falso todos los vertices
+	 }
+	 Iterator<Integer> it = grafo.obtenerVertices();
+	 while(it.hasNext()) {
+		 if(true/*si visitado esta falso*/){
+				 
+	 }
+	 
+	 
+		return null;
+	}
+		
+	public void bfs_visit(int v) {
+		
+	}
+	
+	}
+
+	
+
+
+
